@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org" xmlns:enctype="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新增用户信息</title>
+    <header th:replace="header::html"></header>
+</head>
+
+<body>
+<div class="x-body">
+    <form class="layui-form" action="/build/add" method="post" id="">
+        <div class="layui-form-item">
+            <label for="processName" class="layui-form-label">
+                <span class="x-red">*</span>流程名称
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="processName"  name="username" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>请输入你想执行的流程名称
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label id="L_email" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                增加
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form','layer', 'laydate'], function() {
+        $ = layui.jquery;
+        var form = layui.form
+            , layer = layui.layer
+            , laydate = layui.laydate;
+        form.on('submit(add)', function () {
+            var processName=$('#processName');
+            if (processName==undefined){
+                layer.alert("请给该流程设置名称");
+                return false;
+            }
+            layer.alert("设置成功", {icon: 6},function () {
+                // 可以对父窗口进行刷新
+                xadmin.father_reload();
+            });
+
+        });
+    });
+</script>
+</body>
+</html>

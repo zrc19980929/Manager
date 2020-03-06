@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org" xmlns:enctype="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新增用户信息</title>
+    <header th:replace="header::html"></header>
+</head>
+
+<body>
+<div class="x-body">
+    <form class="layui-form" action="/task/list" method="post" id="">
+
+        <div class="layui-form-item">
+            <label id="L_email" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                待办事务
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form','layer', 'laydate'], function() {
+        $ = layui.jquery;
+        var form = layui.form
+            , layer = layui.layer
+            , laydate = layui.laydate;
+        form.on('submit(add)', function () {
+            layer.alert("进入待办表格");
+
+        });
+    });
+</script>
+</body>
+</html>
